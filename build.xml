@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="jdvd" basedir="." default="deploy">
+	
+	<property name="project.name" value="jdvd" />
+	<property name="version" value="1.0" />
+	<property name="src.dir" value="." />
+	<property name="dst.dir" value="/var/www/${project.name}" />
+	<property name="database.dir" value="database" />
+	<property name="database.file" value="${database.dir}/${project.name}bd.sql" />
+	
+	<target name="deploy">
+		<echo message="copy from ${src.dir} to ${dst.dir}" />
+        <copy todir="${dst.dir}">
+            <fileset dir="${src.dir}">
+                <exclude name="build.xml" />
+            	<exclude name="readme*" />
+                <exclude name="${database.dir}/**" />
+            </fileset>
+        </copy>
+	</target>
+	
+	<target name="fill_database">
+		<echo message="fill database from ${database.file}" />
+		<exec executable="mysql" input="${database.file}">
+			<arg value="-u" />
+			<arg value="root" />
+			<arg value="-p" />
+			<arg value="${project.name}bd" />	
+		</exec>
+	</target>
+	
+</project>

@@ -1,0 +1,63 @@
+DE LEEUW Valérian & DEFAYE Johan
+L3 Informatique - Année 2014/2015
+Groupe 1-A
+
+**************************************************
+    Installation de notre version du site PROF 
+**************************************************
+
+Vous devez avoir installé au préalable:
+	- apache2 server
+	- php5 and php5 for apache2
+	- mysql server and client
+	- ant
+
+1) Installation de la base de donnée :
+--------------------------------------
+
+Sous MySQL ou PhpMyAdmin, créer une database nommée "jdvdbd"
+Créer ensuite un utilisateur "jdvdbd" avec comme mot de passe "jdvdbd"
+	
+	GRANT ALL PRIVILEGES ON jdvdbd.* TO 'jdvdbd'@'%' IDENTIFIED BY 'jdvdbd';
+	
+N'oubliez pas de donner les droits au nouvel utilisateur !
+
+	FLUSH PRIVILEGES;
+
+Vous pouvez alors quitter MySQL;
+
+	QUIT;
+	
+	
+2) Remplir la base de donnée :
+------------------------------
+
+Dans le dossier courant jdvd, tapez dans un terminal :
+	
+	ant fill_database
+	
+Il faudra alors saisir le mot de passe root pour finir la procédure.
+	
+	
+
+3) Installation des sources du site :
+-------------------------------------
+
+Toujours dans le dossier courant jdvd, tapez dans un terminal :
+	
+	ant deploy
+
+Le site sera alors copié dans le repertoire "/var/www/jdvd".
+	
+
+4) Naviguer sur le site :
+-------------------------
+
+Ouvrez votre navigateur favori et allez sur le site !
+Si vous êtes en local, cela devrait être "http://localhost/jdvd/index.php/".
+
+Vous disposez de deux comptes lors de la mise en place du site :
+	- admin@commands.fr		admin	
+	- user@commands.fr		user
+
+
